@@ -18,10 +18,10 @@ def start_game():
     #   2. Store a random number as the answer/solution.
     answer = random.randint(1, 10)
     #   3. Continuously prompt the player for a guess.
-    attempts_list = []
-    all_attempts = []
     guess = 0
     attempts = 0
+    attempts_list = []
+    all_attempts = []
     while guess != answer:
         try:
             guess = int(input("Guess a number from 1 - 10: "))
@@ -33,16 +33,18 @@ def start_game():
                 #     b. If the guess is less than the solution, display to the player "It's higher".
             elif guess > answer:
                 print("It's lower. Try again.")
-            # elif guess < 0 or guess > 10:
-                # print("Please enter a number between 1 and 10. Try again.")
-            # elif guess != int(guess):
-               # print("Input invalid. Please enter a number between 1 and 10. Try again.")
+            elif guess < 0:
+                print("Please enter a number from 1 and 10. Try again.")
+            elif guess > 10:
+                print("Please enter a number from 1 to 10. Try again.")
+            elif guess != int(guess):
+               print("Input invalid. Please enter a number between 1 and 10. Try again.")
                 #   4. Once the guess is correct, stop looping, inform the user they "Got it" and store the number of guesses it took in a list.
             else:
                 print("Got it!")
-                # print(attempts)
-                # print(attempts_list)
                 attempts_list.append(attempts)
+                print(attempts)
+                print(attempts_list)
                 #   5. Display the following data to the player
                 #     a. How many attempts it took them to get the correct number in this game
                 print("It took you {} attempts to guess the correct number in this game.".format(attempts))
@@ -57,24 +59,24 @@ def start_game():
                 #     d. The mode of the saved attempts list
                 mode_attempts = statistics.mode(attempts_list)
                 print("Mode: {}".format(mode_attempts))
-                #   6. Prompt the player to play again
-                play_again = input("Would you like to play again? Enter y/n ")
-            #     a. If they decide to play again, start the game loop over.
-            while True:
-                start_game()
-                if play_again.lower() == "y" or "yes":
-                    print("Let's start again")
-                    continue
-                elif play_again.lower() == "n" or "no":
-                    all_attempts.append(guesses_list)
+    #   6. Prompt the player to play again
+                play_again = input("Would you like to play again? Enter y/n: ")
+        #     a. If they decide to play again, start the game loop over.
+                if play_again.lower() == "y":
+                    print("Let's start again!")
+                    start_game()
+        #     b. If they decide to quit, show them a goodbye message.
+                elif play_again.lower() == "n":
+                    all_attempts.append(attempts_list)
                     print("Thanks for playing! Good bye!")
                     break                
-                #     b. If they decide to quit, show them a goodbye message.
                 else:
                     print("Invalid input. Exiting the game.")
                     break
         except ValueError:
             print("Please enter a valid integer between 1 to 10.")
+        
+        
                     
 # ( You can add more features/enhancements if you'd like to. )
 #high_score = min(all_attempts)
