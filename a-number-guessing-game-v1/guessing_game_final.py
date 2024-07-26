@@ -69,7 +69,7 @@ def start_game():
                 if high_score == None:
                   print(f"__________________________________\nYou set a high score of {attempts} attempts!\n__________________________________")
                 elif attempts < high_score:
-                  print(f"___________________________________________\nYou've set a new high score of {attempts} attempts!n\___________________________________________")
+                  print(f"___________________________________________\nYou've set a new high score of {attempts} attempts!\n___________________________________________")
                 elif attempts == high_score:
                   print("_____________________________________________________________________\nYour number of attempts is tied with the current high score.\n Please play again to try to beat the high score!\n_____________________________________________________________________")
                 else:
